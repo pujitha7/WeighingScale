@@ -2,6 +2,7 @@ import os
 
 import cv2
 import numpy as np
+import sys
 
 
 def increase_brightness(image):
@@ -51,11 +52,16 @@ def load_images_from_folder(folder):
     return images
 
 
-if __name__ == "__main__":
-    images_data = load_images_from_folder("../../test-images")
-    i = 0
-    for image in images_data:
-        numberFromROI(image, str(i))
-        i += 1
+# if __name__ == "__main__":
+#     images_data = load_images_from_folder("../../test-images")
+#     i = 0
+#     for image in images_data:
+#         numberFromROI(image, str(i))
+#         i += 1
+
+imagePath = sys.argv[1]
+image = cv2.imread(imagePath)
+image = increase_brightness(image)
+numberFromROI(image, 0)
 
 cv2.destroyAllWindows()
